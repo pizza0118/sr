@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>SPINNING</title>
+<th:block th:include="layout/partials/head"/>
+</head>
+<body>
+	<div class="layout-container">
+		<div th:replace="layout/partials/nav"></div>
+	    <div class="main">
+	        <div layout:fragment="content" ></div>
+	    </div>
+<!-- 	    <footer th:replace="layout/partials/footer"></footer> -->
+    </div>
+</body>
+</html>

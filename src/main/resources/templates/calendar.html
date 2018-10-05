@@ -1,0 +1,80 @@
+<th:block layout:decorate="~{layout/calendarLayout}">
+	<head>
+        <title>SPINNING</title>
+    </head>
+	<div layout:fragment="content">	
+		<div id='calendar' class="calendarDiv"></div>
+    </div>
+</th:block>
+<script>
+  $(document).ready(function() {
+    $('#calendar').fullCalendar({
+	  //視窗大小變更觸發大小變動
+	  windowResize: function(view) {
+// 		alert('The calendar has adjusted to a window resize');
+	  },
+	  height: 'parent',
+      header: {
+        left: 'prev,next today',
+        center: 'title',
+        <!-- right: 'month' -->
+      },
+      defaultDate: '2018-10-14',
+      navLinks: true, // can click day/week names to navigate views
+	  navLinkDayClick: function(date, jsEvent) {
+		console.log('day', date.format()); // date is a moment
+		console.log(jsEvent);
+	  },
+	  dayClick: function(date, jsEvent, view) {
+		
+		var enterEventName = prompt('Enter Event Name');
+		  console.log(enterEventName);
+		console.log('Clicked on: ' + date.format());
+
+		console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+		console.log('Current view: ' + view.name);
+		
+		if('' !== enterEventName && null !== enterEventName){
+			//建立點擊創造事件
+			$('#calendar').fullCalendar('renderEvent', {
+			  title: enterEventName,
+			  start: date.format(),
+			  allDay: true
+			});
+		}
+		
+		// change the day's background color just for fun
+		//(this).css('background-color', 'red');
+
+	  },
+	  	  
+	  eventClick: function(calEvent, jsEvent, view) {
+
+		console.log('Event: ' + calEvent.title);
+		console.log('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+		console.log('View: ' + view.name);
+
+		// change the border color just for fun
+		$(this).css('border-color', 'red');
+
+	  },
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+        {
+          title: 'haha',
+          start: '2018-10-01'
+        },
+        {
+          title: 'aaa',
+          start: '2018-10-07',
+          end: '2018-10-07',
+		  url: 'http://google.com/'
+        }
+      ]
+    });
+  });
+
+</script>
+

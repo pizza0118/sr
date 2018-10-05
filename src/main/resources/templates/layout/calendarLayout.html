@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<title>SPINNING</title>
+<th:block th:include="layout/partials/head"/>
+<style>
+  .fc-day-number {
+	font-size: 1em;
+  }
+  
+  body, html {
+    height: 100%;
+  }
+  .calendarContent {
+  	width: 90%;
+  	height: 85%;
+  	margin: auto;
+  }
+</style>
+</head>
+<body>
+	<div th:replace="layout/partials/nav"></div>
+       <div layout:fragment="content" class="calendarContent"></div>
+</body>
+</html>
